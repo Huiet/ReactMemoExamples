@@ -7,15 +7,30 @@ import TodoList from './basic-memo-examples/todoList/TodoList';
 
 function App() {
   const [count, setCount] = useState(0)
-
+  const [showTodoList, setShowTodoList] = useState(false);
+  const [showBasicMemo, setShowBasicMemo] = useState(false);
+  const [showContextMemo, setShowContextMemo] = useState(false);
   return (
     <div className="App">
-      <ContextParent/>
 
-      <BasicMemo/>
+      <div style={{display: 'flex', gap: '1em' }}>
+        <button onClick={() => setShowTodoList(!showTodoList)}>Toggle TodoList</button>
+        <button onClick={() => setShowBasicMemo(!showBasicMemo)}>Toggle BasicMemo</button>
+        <button onClick={() => setShowContextMemo(!showContextMemo)}>Toggle ContextMemo</button>
+      </div>
+
+      {
+        showContextMemo && <ContextParent/>
+      }
+
+      {
+        showBasicMemo && <BasicMemo/>
+      }
 
 
-      <TodoList/>
+      {
+        showTodoList && <TodoList/>
+      }
 
       {/*<div>*/}
       {/*  <a href="https://vitejs.dev" target="_blank">*/}

@@ -5,10 +5,12 @@ const BasicMemo = () => {
   const [address, setAddress] = useState('');
   return (
     <>
+      <h2>Basic Memo</h2>
       <label>
         Name{': '}
         <input value={name} onChange={e => setName(e.target.value)} />
       </label>
+      <br/>
       <label>
         Address{': '}
         <input value={address} onChange={e => setAddress(e.target.value)} />
