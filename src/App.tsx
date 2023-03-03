@@ -4,12 +4,14 @@ import './App.css'
 import ContextParent from './context-example/ContextParent';
 import BasicMemo from './basic-memo-examples/BasicMemo';
 import TodoList from './basic-memo-examples/todoList/TodoList';
+import MemoCalc from './basic-memo-examples/MemoCalc';
 
 function App() {
   const [count, setCount] = useState(0)
   const [showTodoList, setShowTodoList] = useState(false);
   const [showBasicMemo, setShowBasicMemo] = useState(false);
   const [showContextMemo, setShowContextMemo] = useState(false);
+  const [showMemoCalc, setShowMemoCalc] = useState(false);
   return (
     <div className="App">
 
@@ -17,7 +19,12 @@ function App() {
         <button onClick={() => setShowTodoList(!showTodoList)}>Toggle TodoList</button>
         <button onClick={() => setShowBasicMemo(!showBasicMemo)}>Toggle BasicMemo</button>
         <button onClick={() => setShowContextMemo(!showContextMemo)}>Toggle ContextMemo</button>
+        <button onClick={() => setShowMemoCalc(!showMemoCalc)}>Toggle MemoCalc</button>
       </div>
+
+      {
+        showMemoCalc && <MemoCalc/>
+      }
 
       {
         showContextMemo && <ContextParent/>
