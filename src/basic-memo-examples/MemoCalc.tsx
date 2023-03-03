@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 
 export const realExpensiveCalc = (count: number) => {
@@ -12,11 +12,16 @@ export const realExpensiveCalc = (count: number) => {
 const MemoCalc = () => {
   const [count, setCount] = useState(0);
   const [otherProp, setOtherProp] = useState('some other prop');
+  // const [visibleCount, setVisibleCount] = useState(0);
   console.time('memoCalc');
   const increment = () => setCount(count + 1);
-  // const visibleCount = useMemo(() => realExpensiveCalc(count), [count]);
-  // const visibleCount = useMemo(() => realExpensiveCalc(count), [count]);
-  const visibleCount = realExpensiveCalc(count); // no memo
+  const visibleCount = useMemo(() => realExpensiveCalc(count), [count]);
+  // const visibleCount = realExpensiveCalc(count); // no memo
+
+  // useEffect(() => {
+  //   setVisibleCount(realExpensiveCalc(count));
+  // }, [count]);
+
 
   console.timeEnd('memoCalc');
 

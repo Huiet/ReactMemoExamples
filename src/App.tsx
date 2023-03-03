@@ -14,7 +14,8 @@ function App() {
   const [showMemoCalc, setShowMemoCalc] = useState(false);
   return (
     <div className="App">
-
+      <div>Count: {count}</div>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
       <div style={{display: 'flex', gap: '1em' }}>
         <button onClick={() => setShowTodoList(!showTodoList)}>Toggle TodoList</button>
         <button onClick={() => setShowBasicMemo(!showBasicMemo)}>Toggle BasicMemo</button>

@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 import TodoItem from './TodoItem';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -19,35 +19,19 @@ const TodoList = () => {
   }
 
   // callback version
-  const removeTodo = useCallback(
-    (id: string) => {
-      let count = 4;
-      // for(let i = 0; i < 1000000000; i++) {
-      //   count++;
-      // }
-      const newTodos: Todo[] = todos.filter(todo => todo.id !== id);
-      setTodos(newTodos);
-    }, [todos]); // without dependency it gets wacky
+  // const removeTodo = useCallback(
+  //   (id: string) => {
+  //     let count = 4;
+  //     // for(let i = 0; i < 1000000000; i++) {
+  //     //   count++;
+  //     // }
+  //     const newTodos: Todo[] = todos.filter(todo => todo.id !== id);
+  //     setTodos(newTodos);
+  //   }, [todos]); // without dependency it gets wacky
 
   // callback version
-  const toggleTodo = useCallback((id: string) => {
-    console.log('todos', todos);
-    const newTodos: Todo[] = todos.map(todo => {
-      if(todo.id === id) {
-        return {
-          ...todo,
-          completed: !todo.completed
-        }
-      }
-      return todo;
-    });
-    console.log('newTodos', newTodos);
-    setTodos(newTodos);
-  }, [todos]); // removing dependency causes it to reset to todos initial state on toggle
-
-
-  // non callback version
-  // const toggleTodo = (id: string) => {
+  // const toggleTodo = useCallback((id: string) => {
+  //   console.log('todos', todos);
   //   const newTodos: Todo[] = todos.map(todo => {
   //     if(todo.id === id) {
   //       return {
@@ -57,19 +41,35 @@ const TodoList = () => {
   //     }
   //     return todo;
   //   });
+  //   console.log('newTodos', newTodos);
   //   setTodos(newTodos);
-  // }
+  // }, [todos]); // removing dependency causes it to reset to todos initial state on toggle
+
 
   // non callback version
-  // const removeTodo = (id: string) => {
-  //     let count = 4;
-  //     // note: this doesn't have much effect on anything because we are just defining a function
-  //     for(let i = 0; i < 10000033232320000; i++) {
-  //       count++;
-  //     }
-  //     const newTodos: Todo[] = todos.filter(todo => todo.id !== id);
-  //     setTodos(newTodos);
-  //   };
+  const toggleTodo = (id: string) => {
+    const newTodos: Todo[] = todos.map(todo => {
+      if(todo.id === id) {
+        return {
+          ...todo,
+          completed: !todo.completed
+        }
+      }
+      return todo;
+    });
+    setTodos(newTodos);
+  }
+
+  // non callback version
+  const removeTodo = (id: string) => {
+      let count = 4;
+      // note: this doesn't have much effect on anything because we are just defining a function
+      for(let i = 0; i < 10000033232320000; i++) {
+        count++;
+      }
+      const newTodos: Todo[] = todos.filter(todo => todo.id !== id);
+      setTodos(newTodos);
+    };
 
 
 

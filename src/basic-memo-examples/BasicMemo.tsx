@@ -1,4 +1,5 @@
 import React, { memo, useRef, useState } from 'react';
+import Greeting2 from './greeting2';
 
 const BasicMemo = () => {
   const [name, setName] = useState('');
@@ -16,13 +17,17 @@ const BasicMemo = () => {
         <input value={address} onChange={e => setAddress(e.target.value)} />
       </label>
       <Greeting name={name} />
+      <Greeting2/>
     </>
   );
 };
 
+
+
 const Greeting =
   memo(
     function Greeting({ name }: {name: string}) {
+      console.log('greeting 1 rerendered');
   const ref = useRef(0);
   ref.current = ref.current + 1;
   return (

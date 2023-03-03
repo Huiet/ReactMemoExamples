@@ -8,7 +8,7 @@ export interface TodoItemProps {
 }
 
 const TodoItem = memo(({todo, removeTodo, toggleTodo}: TodoItemProps) => {
-  console.log('rerender', todo.text)
+  // console.log('rerender', todo.text)
   return (
     <div style={{margin: '1em'}}>
       <input style={{marginRight: '2em'}} type="checkbox" checked={todo.completed} onChange={() => toggleTodo(todo.id)}/>
