@@ -18,7 +18,6 @@ const ProviderWithMemo = ({children }: any) => {
     increment: () => { console.log('8ount', count); setCount(count + 1)},
     decrement: () => setCount(count - 1),
   }), [count]);
-  console.log('value', value);
   return (
     <CounterContextMemo.Provider value={value}>{children}</CounterContextMemo.Provider>
   );
